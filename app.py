@@ -30,18 +30,21 @@ def split(df):
 def plot_metrics(metrics_list, model, x_test, y_test, class_names):
     if 'Confusion Matrix' in metrics_list:
         st.subheader("Confusion Matrix")
-        plot_confusion_matrix(model, x_test, y_test, display_labels=class_names)
-        st.pyplot()
+        p = plot_confusion_matrix(model, x_test, y_test, display_labels=class_names)
+        fig, ax = p.figure_, p.ax_
+        st.pyplot(fig)
 
     if 'ROC Curve' in metrics_list:
         st.subheader("ROC Curve")
-        plot_roc_curve(model, x_test, y_test)
-        st.pyplot()
+        p = plot_roc_curve(model, x_test, y_test)
+        fig, ax = p.figure_, p.ax_
+        st.pyplot(fig)
 
     if 'Precision-Recall Curve' in metrics_list:
         st.subheader("Precision-Recall Curve")
-        plot_precision_recall_curve(model, x_test, y_test)
-        st.pyplot()
+        p = plot_precision_recall_curve(model, x_test, y_test)
+        fig, ax = p.figure_, p.ax_
+        st.pyplot(fig)
 
 def main():
     # setup presentation
@@ -56,7 +59,7 @@ def main():
     class_names = ['edible', 'poisonous']
 
     if st.sidebar.checkbox("Show raw data", False):
-        st.subheader("Musroom Data Set (Classification)")
+        st.subheader("Mushroom Data Set (Classification)")
         st.write(df)
 
     st.sidebar.subheader("Choose Classifier")

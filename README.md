@@ -9,3 +9,7 @@ streamlit run app.py
 ```
 
 Data: https://github.com/stedy/Machine-Learning-with-R-datasets/blob/master/mushrooms.csv
+
+## DEMO
+
+<img src="demo.gif" />
